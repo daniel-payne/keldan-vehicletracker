@@ -1,0 +1,152 @@
+﻿<div id="ViewOverview"  class="View"  data-dojo-type="dojox.mobile.ScrollableView" >
+   
+  <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="label:'Status', back:'Menu', moveTo:'ViewVehicles'" ></h1>
+  
+   <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="true" >
+     <span>G11 KKL</span>
+   </div>
+      
+  <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+    <table class="Table-Info" >
+        <colgroup>
+          <col class="Column-Info-Label" />
+          <col class="Column-Info-Data"  />
+          <col class="Column-Info-Unit"  />
+        </colgroup>
+        <tr>
+          <td class="Cell-Info-Heading"  colspan="2" >Latest Fueling</td>
+        </tr>
+        <tr>
+          <td class="Cell-Info-Label" >Price</td>
+          <td class="Cell-Info-Data"  >1.349</td>
+          <td class="Cell-Info-Unit"  >£ per Litre</td>
+        </tr>
+        <tr>
+          <td class="Cell-Info-Label" >Consumption Rate</td>
+          <td class="Cell-Info-Data"  >23.45</td>
+          <td class="Cell-Info-Unit"  >miles per gallon</td>
+        </tr>
+      </table>
+  </div>
+
+  <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+    <table  class="Table-Info" >
+        <colgroup>
+          <col class="Column-Info-Label" />
+          <col class="Column-Info-Data"  />
+          <col class="Column-Info-Unit"  />
+        </colgroup>
+        <tr>
+          <td class="Cell-Info-Heading"  colspan="2" >Current Consignments</td>
+        </tr>
+        <tr>
+          <td class="Cell-Info-Label" >Number</td>
+          <td class="Cell-Info-Data"  >6</td>
+        </tr>
+        <tr>
+          <td class="Cell-Info-Label" >Total Weight</td>
+          <td class="Cell-Info-Data"  >423.6</td>
+          <td class="Cell-Info-Unit"  >kg</td>
+        </tr>
+      </table>
+  </div>
+
+
+  <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+    <table  class="Table-Info" >
+        <colgroup>
+          <col class="Column-Info-Label" />
+          <col class="Column-Info-Data"  />
+          <col class="Column-Info-Data"  />
+          <col class="Column-Info-Data"  />
+          <col class="Column-Info-Data"  />
+        </colgroup>
+        <tr>
+          <td class="Cell-Info-Heading"  colspan="4" >Daily Movements &amp; Costs</td>
+        </tr>
+         <tr>
+          <td class="Cell-Info-Label"   ></td>
+          <td class="Cell-Info-Header"  >Distance</td>
+          <td class="Cell-Info-Header"  >Fuel Cost</td>
+          <td class="Cell-Info-Header"  >Unit Cost</td>
+        </tr>
+        <tr>
+          <td class="Cell-Info-Label"       ></td>
+          <td class="Cell-Info-HeaderUnit"  >km</td>
+          <td class="Cell-Info-HeaderUnit"  >£</td>
+          <td class="Cell-Info-HeaderUnit"  >£/km</td>
+        </tr>        
+        <tr>
+          <td class="Cell-Info-Label" >Thursday</td>
+          <td class="Cell-Info-Data"  >320</td>
+          <td class="Cell-Info-Data"  >137.60</td>
+          <td class="Cell-Info-Data"  >0.43</td>
+        </tr>
+         <tr>
+          <td class="Cell-Info-Label" >Wednesday</td>
+          <td class="Cell-Info-Data"  >461</td>
+          <td class="Cell-Info-Data"  >216.67</td>
+          <td class="Cell-Info-Data"  >0.47</td>
+        </tr>      
+       <tr>
+          <td class="Cell-Info-Label" >Tuesday</td>
+          <td class="Cell-Info-Data"  >262</td>
+          <td class="Cell-Info-Data"  >102.18</td>
+          <td class="Cell-Info-Data"  >0.39</td>
+        </tr>      
+       <tr>
+          <td class="Cell-Info-Label" >Monday</td>
+          <td class="Cell-Info-Data"  >126</td>
+          <td class="Cell-Info-Data"  >52.92</td>
+          <td class="Cell-Info-Data"  >0.42</td>
+        </tr>        
+       <tr>
+          <td class="Cell-Info-Label" >Friday</td>
+          <td class="Cell-Info-Data"  >342</td>
+          <td class="Cell-Info-Data"  >136.80</td>
+          <td class="Cell-Info-Data"  >0.40</td>
+        </tr>        
+    </table>
+  </div>
+
+   <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+
+     <span>Utilization and Empty Running (%)</span>
+
+		 <div dojoType="dojox.charting.widget.Chart" id="chartConsignments" style="width: 100%; height: 180px;" theme="dojox.charting.themes.ertocTheme"> 
+		 	
+		 	<div class="axis" name="axisY" vertical="true" min="-30" max="30"  ></div>
+		 	
+        <div class="plot" name="plotEmptys"       type="Columns" gap="12" tension= "3"  markers="false" vAxis="axisY" ></div> 
+        <div class="plot" name="plotUtilizations" type="Columns" gap="10" tension= "3"  markers="false" vAxis="axisY"  ></div> 
+		 	
+     
+        <div class="series" name="dataEmptyRunning" plot="plotEmptys"      
+          data="-21, -12, -21.3, -23.2, -6.3, -100, -12.3, -27.3">
+        </div> 
+     
+        <div class="series" name="dataUtilization" plot="plotUtilizations"      
+          data="26.8, 26.2, 27.4, 25.3, 26.4, 0.0, 26.5, 26.3">
+        </div> 
+		 </div>
+
+   </div>
+ 
+  <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+
+     <span>Fuel Consumption (Mpg)</span>
+			
+     <div dojoType="dojox.charting.widget.Chart" id="chartConsumptions" style="width: 100%; height: 180px;" theme="dojox.charting.themes.ertocTheme"> 
+				
+				<div class="axis" name="axisY" vertical="true" fixUpper="major" includeZero="true" ></div>
+				
+       <div class="plot" name="plotConsumptions" type="Lines" tension= "3"  markers="true" vAxis="axisY" ></div>
+				
+       <div class="series" name="seriesConsumptions" plot="plotConsumptions" data="1, 2, 0.5, 1.5, 1, 2.8, 0.4"></div>
+
+			</div>
+
+   </div>
+
+
+</div>

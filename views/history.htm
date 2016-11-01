@@ -1,0 +1,81 @@
+﻿
+ <div id="ViewHistory" data-dojo-type="dojox.mobile.ScrollableView" style="height: 100%;" selected="selected">
+
+  <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="label:'History', back:'Menu', moveTo:'ViewMenu'" > 
+      <div data-dojo-type="dojox.mobile.ToolBarButton" class="mblDomButton" style="float:right;" onClick="app.showDialog('DialogMessageSelect')">Messages</div>
+  </h1>
+  
+  <div data-dojo-type="dojox.mobile.RoundRect" shadow="true"><span>R543 WLB</span></div>
+  
+  <div label="Tuesday 23ed July" data-dojo-type="dojox.mobile.EdgeToEdgeCategory"></div>
+
+  <ul data-dojo-type="dojox.mobile.EdgeToEdgeList">
+    <li data-dojo-type="dojox.mobile.ListItem" style="height:auto;">
+      <span>10:23 Telematics</span>
+      <br />
+      <div class="Div-Info-3Col">23.4 kph</div>
+      <div class="Div-Info-3Col"> 051.2039482034</div>
+      <div class="Div-Info-3Col">-002.2305920343</div>
+    </li>
+    <li data-dojo-type="dojox.mobile.ListItem" style="height:auto;">
+      <span>10:22 Telematics</span>
+      <br />
+      <div class="Div-Info-3Col">25.6 kph</div>
+      <div class="Div-Info-3Col"> 051.2039482343</div>
+      <div class="Div-Info-3Col">-002.2305956564</div>
+    </li>
+    <li data-dojo-type="dojox.mobile.ListItem" style="height:auto;">
+      <span>10:22 Telematics</span>
+      <br />
+      <div class="Div-Info-3Col">36.7 kph</div>
+      <div class="Div-Info-3Col"> 051.2039434534</div>
+      <div class="Div-Info-3Col">-002.2305934656</div>
+    </li>
+    <li data-dojo-type="dojox.mobile.ListItem" style="height:auto;">
+      <span>10:21 Fueling</span>
+      <br />
+      <div class="Div-Info-3Col">56.43 litres</div>
+      <div class="Div-Info-3Col">£1.349 per Litre</div>
+      <div class="Div-Info-3Col">£68.34</div>
+    </li>
+    <li data-dojo-type="dojox.mobile.ListItem" style="height:auto;">
+      <span>10:20 Telematics</span>
+      <br />
+      <div class="Div-Info-3Col">12.3 kph</div>
+      <div class="Div-Info-3Col"> 051.2039434868</div>
+      <div class="Div-Info-3Col">-002.2305967866</div>
+    </li>
+    <li data-dojo-type="dojox.mobile.ListItem" style="height:auto;">
+      <span>10:21 Loaded Consignment</span>
+      <br />
+      <div class="Div-Info-3Col">20482093420 (34.5kg)</div>
+      <div class="Div-Info-3Col"> 051.2039433453</div>
+      <div class="Div-Info-3Col">-002.2305967797</div>
+   </li>
+
+  </ul>
+
+
+
+  <div id="DialogMessageSelect" data-dojo-type="dojox.mobile.SimpleDialog" style="display: none;" >
+      <div class="mblSimpleDialogTitle">Messages</div>
+      <div class="mblSimpleDialogText">Select the message types you want displayed.</div>
+      <div style="text-align: left;">
+        <input class="RadioButton-Popup-Option" type="checkbox" data-dojo-type="dojox.mobile.CheckBox" checked="checked">Start &amp; End Tracking</input><br />
+        <input class="RadioButton-Popup-Option" type="checkbox" data-dojo-type="dojox.mobile.CheckBox" checked="checked">Fueling</input><br />
+        <input class="RadioButton-Popup-Option" type="checkbox" data-dojo-type="dojox.mobile.CheckBox" checked="checked">Consignments</input><br />
+        <input class="RadioButton-Popup-Option" type="checkbox" data-dojo-type="dojox.mobile.CheckBox"                  >Telematics</input><br />
+      </div>
+      <div class="mblSimpleDialogText">Select the period you want to look back.</div>
+      <div style="text-align: left;">
+        <input class="RadioButton-Popup-Option" type="radio" data-dojo-type="dojox.mobile.RadioButton"                  >Today</input><br />
+        <input class="RadioButton-Popup-Option" type="radio" data-dojo-type="dojox.mobile.RadioButton"                  >Today &amp; Yesterday</input><br />
+        <input class="RadioButton-Popup-Option" type="radio" data-dojo-type="dojox.mobile.RadioButton" checked="checked">Last Week</input><br />
+        <input class="RadioButton-Popup-Option" type="radio" data-dojo-type="dojox.mobile.RadioButton"                  >Last Month</input><br />
+      </div>
+      <button data-dojo-type="dojox.mobile.Button" class="mblSimpleDialogButton"                style="width:100px;" onclick="app.hideDialog('DialogMessageSelect');">Select</button>
+      <button data-dojo-type="dojox.mobile.Button" class="mblSimpleDialogButton  mblRedButton"  style="width:100px;" onclick="app.hideDialog('DialogMessageSelect');">Cancel</button>
+  </div>
+
+
+</div>

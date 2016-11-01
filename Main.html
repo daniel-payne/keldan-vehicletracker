@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Untitled</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- REMOVE FOR PRODUCTION -->
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma"        content="no-cache">
+
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />  
+        
+    <style>
+      @import "./styles/app.css";
+    </style>
+
+    <script>      var dojoConfig = {    
+        isDebug:     true, 
+        parseOnLoad: false, 
+        async:       true,  
+        packages: [        
+          {name:  "ertoc",   location: location.href.replace(/\/[^/]+$/, '') + "/scripts"} 
+        ]
+      };
+    </script>
+    <!--
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.0/dojo/dojo.js" ></script>
+  	-->
+
+    <script src="./scripts/dojo 1.8.0/dojo/dojo.js" ></script>
+
+    <script type="text/javascript">
+
+      define("ertoc/ertocTheme", [
+        "dojox/charting/Theme", 
+        "dojox/charting/themes/common"
+      ], function (theme, themes) {
+        //places it for use as 
+        //theme="dojox.charting.themes.ertocTheme"
+        themes.ertocTheme = new dojox.charting.Theme({         
+ 		      chart: {
+			      fill:	          "#C5C5DA"   
+		      },         
+          plotarea: { fill: "#C5C5DA" }
+        });
+
+        return themes.ertocTheme;
+      });
+
+      require([
+
+        "ertoc/app",
+        "ertoc/actions",
+
+        "ertoc/ertocTheme",
+
+        "dojox/mobile",
+        "dojox/mobile/parser",
+        "dojox/mobile/deviceTheme",
+        "dojox/mobile/compat",
+        "dojox/mobile/TextArea",
+        "dojox/mobile/ContentPane",
+        "dojox/mobile/TextBox",
+        "dojox/mobile/Button",
+        "dojox/mobile/SimpleDialog",
+        "dojox/mobile/TextArea",
+        "dojox/mobile/ExpandingTextArea",
+        "dojox/mobile/CheckBox",
+        "dojox/mobile/View",
+        "dojox/mobile/ScrollableView",
+        "dojox/mobile/CheckBox",
+        "dojox/mobile/RadioButton",
+        
+        "dojox/charting/widget/Chart",
+        "dojox/charting/axis2d/Default",
+        "dojox/charting/plot2d/Areas",
+        "dojox/charting/plot2d/Lines",
+        "dojox/charting/plot2d/Columns",
+
+        "dojo/domReady!"
+      ], function (app) {
+      
+        app.initilize();
+      });
+    </script>
+</head>
+
+<body >  
+
+    <div id="DivSplash" style="text-align: center;" >Loading ERTOC Vehicle Manager</div>  
+   
+    <div id="ViewWelcome"  data-dojo-type="dojox.mobile.View" style="height: 100%; display:none;"  >
+        <h1 data-dojo-type="dojox.mobile.Heading" >ERTOC</h1>
+    
+        <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect">
+           <span>EMail</span>
+           <input data-dojo-type="dojox.mobile.TextBox" class="TextBox-Large" type="text" value="daniel.payne@keldan.co.uk"></input>
+           <span>Password</span>
+           <input data-dojo-type="dojox.mobile.TextBox" class="TextBox-Large" type="password" value="aaa" ></input>
+        </div>
+        <ul data-dojo-type="dojox.mobile.RoundRectList">
+          <li data-dojo-type="dojox.mobile.ListItem" rightText="Login" url="./views/vehicles.htm" onclick="app.actions.connect(this, null);" >Returning User</li>
+        </ul>
+  
+        <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect">
+           <span>Just start using the program, you can add save your data with a user name when you decide to logout</span>
+        </div>
+         <ul data-dojo-type="dojox.mobile.RoundRectList">
+          <li data-dojo-type="dojox.mobile.ListItem" rightText="Start Using" url="./views/new.htm">New User</li>
+        </ul>
+
+    </div>
+
+ </body>
+</html>

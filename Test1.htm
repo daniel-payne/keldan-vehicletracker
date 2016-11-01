@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Test</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- REMOVE FOR PRODUCTION -->
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma"        content="no-cache">
+
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />  
+        
+
+    <script>      var dojoConfig = {    
+        isDebug:     true, 
+        parseOnLoad: false, 
+        async:       true 
+      };
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.0/dojo/dojo.js"></script> 
+
+    <script  >
+
+      require([
+
+        "dijit/registry",
+        "dojo/dom",
+        "dojo/parser",
+        
+        "dojo/on",
+
+        "dojo/domReady!"
+      ], function (registry, dom, parser, on) {
+      
+     
+        parser.parse(); 
+    
+        function testFunction(){
+          //DO SOMTHING
+        };        
+        //does not work
+        on(window, 'onresize', testFunction);
+        
+        if (window.onresize !== null) {
+          window.alert('on pass');
+        }  else {
+          window.alert('on fail');
+        }  
+        //does work
+        window.onresize = testFunction;
+        //
+        if (window.onresize !== null) {
+          window.alert('assignment pass');
+        } else {
+          window.alert('assignment fail');
+        }  
+
+      });
+
+    </script>
+</head>
+
+<body >  
+   Test Complete
+</body>
+</html>

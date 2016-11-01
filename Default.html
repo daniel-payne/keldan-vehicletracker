@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Untitled</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- REMOVE FOR PRODUCTION -->
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma"        content="no-cache">
+
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />  
+        
+    <style>
+      @import "./styles/app.css";
+    </style>
+
+    <script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+
+    <script>      var dojoConfig = {    
+        isDebug:     true, 
+        parseOnLoad: false, 
+        async:       true,  
+        packages: [        
+          {name:  "ertoc",   location: location.href.replace(/\/[^/]+$/, '') + "/scripts"} 
+        ]
+      };
+    </script> 
+    <!--
+    <script src="./scripts/dojo 1.8.0/dojo/dojo.js" ></script>
+ 	  -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.0/dojo/dojo.js"></script> 
+
+    <script type="text/javascript">
+
+      define("ertoc/ertocTheme", [
+        "dojox/charting/Theme", 
+        "dojox/charting/themes/common"
+      ], function (theme, themes) {
+        //places it for use as 
+        //theme="dojox.charting.themes.ertocTheme"
+        themes.ertocTheme = new dojox.charting.Theme({         
+ 		      chart: {
+			      fill:	          "#C5C5DA"   
+		      },         
+          plotarea: { fill: "#C5C5DA" }
+        });
+
+        return themes.ertocTheme;
+      });
+
+      require([
+
+        "ertoc/app",
+        "ertoc/actions",
+
+        "ertoc/ertocTheme",
+
+        "dojox/mobile",
+        "dojox/mobile/parser",
+        "dojox/mobile/deviceTheme",
+        "dojox/mobile/compat",
+
+        "dojox/mobile/TextArea",
+        "dojox/mobile/ContentPane",
+        "dojox/mobile/TextBox",
+        "dojox/mobile/Button",
+        "dojox/mobile/SimpleDialog",
+        "dojox/mobile/TextArea",
+        "dojox/mobile/ExpandingTextArea",
+        "dojox/mobile/CheckBox",
+        "dojox/mobile/View",
+        "dojox/mobile/ScrollableView",
+        "dojox/mobile/CheckBox",
+        "dojox/mobile/RadioButton",
+        
+        "dojox/charting/widget/Chart",
+        "dojox/charting/axis2d/Default",
+        "dojox/charting/plot2d/Areas",
+        "dojox/charting/plot2d/Lines",
+        "dojox/charting/plot2d/Columns",
+
+        "dojox/geo/openlayers/Layer", 
+        "dojox/geo/openlayers/widget/Map", 
+        "dojox/geo/openlayers/GfxLayer",
+        "dojox/geo/openlayers/GeometryFeature", 
+        "dojox/geo/openlayers/Point", 
+
+        "dojo/domReady!"
+      ], function (app) {
+      
+        app.initilize();
+      });
+    </script>
+</head>
+
+<body >  
+
+    <div id="DivSplash" style="text-align: center;" >Loading Vehicle Manager</div>  
+
+    <div id="DivApplication" style="display:none;" >
+    <!-- ================================================================================================================================================ -->
+
+   
+    <div id="ViewWelcome"  data-dojo-type="dojox.mobile.View"  dojo-data-selected="selected" >
+        <h1 data-dojo-type="dojox.mobile.Heading" >Vehicle Manager</h1>
+    
+        <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect">
+           <span>EMail</span>
+           <input id="InputUserEmail" data-dojo-type="dojox.mobile.TextBox" class="TextBox-Large" type="text" value="daniel.payne@keldan.co.uk"></input>
+           <span>Password</span>
+           <input id="InputPassword" data-dojo-type="dojox.mobile.TextBox" class="TextBox-Large" type="password" value="aaa" ></input>
+        </div>
+        <ul data-dojo-type="dojox.mobile.RoundRectList">
+          <li data-dojo-type="dojox.mobile.ListItem" rightText="Login" moveTo="ViewVehicles" onclick="app.actions.connect(document.getElementById('InputUserEmail').value, document.getElementById('InputPassword').value);" >Returning User</li>
+        </ul>
+
+    </div>
+
+
+    <!-- ================================================================================================================================================ -->
+
+
+    <div id="ViewVehicles"  data-dojo-type="dojox.mobile.ScrollableView"    >
+
+      <h1 label="Vehicles" data-dojo-type="dojox.mobile.Heading" back="Logout" moveTo="ViewWelcome">
+        <div data-dojo-type="dojox.mobile.ToolBarButton" class="mblDomButton" style="float:right;" onClick="app.showDialog('DialogDataRange')">Data Range</div>
+      </h1>
+  
+ 
+      <ul id="RoundRectListVehicles" data-dojo-type="dojox.mobile.RoundRectList"  >
+        <li data-dojo-type="dojox.mobile.ListItem"  moveTo="ViewOverview" rightText="BMW 520i"                      rightIcon="mblDomButtonArrow" >R543 WLB</li>
+        <li data-dojo-type="dojox.mobile.ListItem"  moveTo="ViewOverview" rightText="Rover Metro 110 Knightsbridge" rightIcon="mblDomButtonArrow" >P898 KJW</li>
+        <li data-dojo-type="dojox.mobile.ListItem"  moveTo="ViewOverview" rightText="IVECO Eurocargo"               rightIcon="mblDomButtonArrow" >Gll KKL</li>
+      </ul>
+
+      <div id="DivWaitIndicatorVehicles" class="Div-WaitIndicator"  style="display:none;" >  
+        <img src="./images/loading.gif" alt="Loading Data" />
+      </div>
+
+       <div id="DialogDataRange" data-dojo-type="dojox.mobile.SimpleDialog" style="display: none;" >
+          <div class="mblSimpleDialogTitle">Data Range</div>
+          <div class="mblSimpleDialogText">Select How far back you would like to display data for:</div>
+          <div style="text-align: left;">
+            <input class="RadioButton-Popup-Option" type="radio" data-dojo-type="dojox.mobile.RadioButton"                   onclick="app.data.selectedDataPoints = 2">Today &amp; Yesterday</input><br />
+            <input class="RadioButton-Popup-Option" type="radio" data-dojo-type="dojox.mobile.RadioButton" checked="checked" onclick="app.data.selectedDataPoints = 7">Last Week</input><br />
+            <input class="RadioButton-Popup-Option" type="radio" data-dojo-type="dojox.mobile.RadioButton"                   onclick="app.data.selectedDataPoints = 30">Last Month</input><br />
+            <input class="RadioButton-Popup-Option" type="radio" data-dojo-type="dojox.mobile.RadioButton"                   onclick="app.data.selectedDataPoints = 90">Last Quater</input><br />
+          </div>
+          <button data-dojo-type="dojox.mobile.Button" class="mblSimpleDialogButton"                style="width:100px;" onclick="app.hideDialog('DialogDataRange'); window.app.actions.clearSummaries();">Select</button>
+          <!--
+          <button data-dojo-type="dojox.mobile.Button" class="mblSimpleDialogButton  mblRedButton"  style="width:100px;" onclick="app.hideDialog('DialogDataRange');">Cancel</button>
+          -->
+      </div>
+      
+    </div>
+
+    <!-- ================================================================================================================================================ -->
+
+
+    <div id="ViewOverview"  class="View"  data-dojo-type="dojox.mobile.ScrollableView"    >
+   
+      <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="label:'Status', back:'Vehicles', moveTo:'ViewVehicles'" >        
+        <div data-dojo-type="dojox.mobile.ToolBarButton" class="mblDomButton" style="float:right;" onClick="window.app.actions.showMap();">Show Map</div>
+      </h1>
+
+  
+       <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="true" >
+        
+         <div class="mblListItem" style="border-bottom: none ! important;">
+           <span id="SpanSelectedVehicleSummaryName"      class="mblListItemLabel">R543 WLB</span>
+           <span id="SpanSelectedVehicleSummaryCategory"  class="mblListItemRightText">BMW520i</span>
+         </div>
+
+       </div>
+      
+      <div id="DivWaitIndicatorOverview" class="Div-WaitIndicator"  style="display:none;" >  
+        <img src="./images/loading.gif" alt="Loading Data" />
+      </div>
+
+      <div id="DivLatestFueling" class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+        <table class="Table-Info" >
+            <colgroup>
+              <col class="Column-Info-Label" />
+              <col class="Column-Info-Data"  />
+              <col class="Column-Info-Unit"  />
+            </colgroup>
+            <tr>
+              <td class="Cell-Info-Heading"  colspan="2" >Latest Fueling</td>
+            </tr>
+            <tr>
+              <td class="Cell-Info-Label" >Price</td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummarylatestFuelingPrice">1.349</span></td>
+              <td class="Cell-Info-Unit"  ><span id="SpanVehicleSummarylatestFuelingPriceUnit">£ per Litre</span></td>
+            </tr>
+            <tr>
+              <td class="Cell-Info-Label" >Consumption Rate</td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummarylatestFuelingConsumptionRate">23.45</span></td>
+              <td class="Cell-Info-Unit"  ><span id="SpanVehicleSummarylatestFuelingConsumptionRateUnit">miles per gallon</span></td>
+            </tr>
+          </table>
+      </div>
+
+      <div id="DivCurrentConsignments" class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+        <table  class="Table-Info" >
+            <colgroup>
+              <col class="Column-Info-Label" />
+              <col class="Column-Info-Data"  />
+              <col class="Column-Info-Unit"  />
+            </colgroup>
+            <tr>
+              <td class="Cell-Info-Heading"  colspan="2" >Current Consignments</td>
+            </tr>
+            <tr>
+              <td class="Cell-Info-Label" >Number</td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryCurrentConsignmentsCount">6</span></td>
+            </tr>
+            <tr>
+              <td class="Cell-Info-Label" >Total Weight</td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryCurrentConsignmentsTotalWeight">423.6</span></td>
+              <td class="Cell-Info-Unit"  ><span id="SpanVehicleSummaryCurrentConsignmentsTotalWeightUnit">kg</span></td>
+            </tr>
+          </table>
+      </div>
+
+
+      <div id="DivDailyMovements" class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+        <table  class="Table-Info" >
+            <colgroup>
+              <col class="Column-Info-Label" />
+              <col class="Column-Info-Data"  />
+              <col class="Column-Info-Data"  />
+              <col class="Column-Info-Data"  />
+              <col class="Column-Info-Data"  />
+            </colgroup>
+            <tr>
+              <td class="Cell-Info-Heading"  colspan="4" >Daily Movements &amp; Costs</td>
+            </tr>
+             <tr>
+              <td class="Cell-Info-Label"   ></td>
+              <td class="Cell-Info-Header"  >Distance</td>
+              <td class="Cell-Info-Header"  >Fuel Cost</td>
+              <td class="Cell-Info-Header"  >Unit Cost</td>
+            </tr>
+            <tr>
+              <td class="Cell-Info-Label"       ></td>
+              <td class="Cell-Info-HeaderUnit"  ><span id="SpanVehicleSummaryDailyMovementsDistanceUnit">km</span></td>
+              <td class="Cell-Info-HeaderUnit"  ><span id="SpanVehicleSummaryDailyMovementsFuelCostUnit">£</span></td>
+              <td class="Cell-Info-HeaderUnit"  ><span id="SpanVehicleSummaryDailyMovementsUnitCostUnit">£/km</span></td>
+            </tr> 
+            
+            <tr>
+              <td class="Cell-Info-Label" >
+                <span id="SpanVehicleSummaryDailyMovements00DayName">Friday</span>
+              </td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements00Distance">342</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements00FuelCost">136.80</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements00UnitCost">0.40</span></td>
+            </tr> 
+            <tr>
+              <td class="Cell-Info-Label" ><span id="SpanVehicleSummaryDailyMovements01DayName">Thursday</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements01Distance">320</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements01FuelCost">137.60</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements01UnitCost">0.43</span></td>
+            </tr>
+  
+            <tr>
+              <td class="Cell-Info-Label" ><span id="SpanVehicleSummaryDailyMovements02DayName">Wednesday</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements02Distance">461</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements02FuelCost">216.67</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements02UnitCost">0.47</span></td>
+            </tr>      
+           <tr>
+              <td class="Cell-Info-Label" ><span id="SpanVehicleSummaryDailyMovements03DayName">Tuesday</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements03Distance">262</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements03FuelCost">102.18</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements03UnitCost">0.39</span></td>
+            </tr>      
+           <tr>
+              <td class="Cell-Info-Label" ><span id="SpanVehicleSummaryDailyMovements04DayName">Monday</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements04Distance">126</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements04FuelCost">52.92</span></td>
+              <td class="Cell-Info-Data"  ><span id="SpanVehicleSummaryDailyMovements04UnitCost">0.42</span></td>
+           </tr>             
+        </table>
+      </div>
+
+       <div id="DivUtilizations" class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+
+         <span>Utilization and Empty Running (%)</span>
+
+		     <div dojoType="dojox.charting.widget.Chart" id="chartConsignments" style="width: 100%; height: 180px;" theme="dojox.charting.themes.ertocTheme"> 
+		 	
+		 	      <div class="axis" name="axisY" vertical="true" min="-30" max="30"  ></div>
+		 	
+            <div class="plot" name="plotEmptyRunning" type="Columns" gap="12" tension= "3"  markers="false" vAxis="axisY" ></div> 
+            <div class="plot" name="plotUtilizations" type="Columns" gap="10" tension= "3"  markers="false" vAxis="axisY"  ></div> 
+		 	
+     
+            <div class="series" name="seriesEmptyRunning" plot="plotEmptyRunning"      
+              data="-21,-12,-21.3,-23.2,-6.3,-100,-12.3,-27.3">
+            </div> 
+     
+            <div class="series" name="seriesUtilization" plot="plotUtilizations"      
+              data="26.8, 26.2, 27.4, 25.3, 26.4, 0.0, 26.5, 26.3">
+            </div> 
+		     </div>
+
+       </div>
+ 
+      <div id="DivConsumptions" class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="false" >
+
+         <span>Fuel Consumption (Mpg)</span>
+			
+         <div dojoType="dojox.charting.widget.Chart" id="chartConsumptions" style="width: 100%; height: 180px;" theme="dojox.charting.themes.ertocTheme"> 
+				
+				   <div class="axis" name="axisY" vertical="true" fixUpper="major" includeZero="true" ></div>
+				
+           <div class="plot" name="plotConsumptions" type="Lines" tension= "3"  markers="true" vAxis="axisY" ></div>
+				
+           <div class="series" name="seriesConsumptions" plot="plotConsumptions" data="1, 2, 0.5, 1.5, 1, 2.8, 0.4"></div>
+
+			    </div>
+
+       </div>
+
+   </div>
+
+
+   <!-- ================================================================================================================================================ -->
+
+
+    <div id="ViewMap"  class="View"  data-dojo-type="dojox.mobile.View"    >
+   
+      <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="label:'Current Position', back:'Vehicles', moveTo:'ViewVehicles'" >        
+        <div data-dojo-type="dojox.mobile.ToolBarButton" class="mblDomButton" style="float:right;" onClick="window.app.actions.showSummary();">Summary</div>
+      </h1>
+
+      
+      <div id="DivMapCanvas" data-dojo-type="dojox.geo.openlayers.widget.Map" style="background-color: #b5d0d0; width: 100%; height: 1080px">
+      </div>
+
+    </div>
+   </div>
+
+
+
+ </body>
+</html>

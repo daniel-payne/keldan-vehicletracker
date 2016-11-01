@@ -1,0 +1,126 @@
+﻿
+
+.Round-Rect-Info {
+   background-color: #C5C5DA !important; 
+
+}
+
+
+
+.Hidden {
+    display: none;
+}
+
+.TextBox-Large
+{
+    width:         100%    !important; 
+    font-size:     large   !important; 
+    height:        40px    !important; 
+    margin-bottom: 20px; 
+    margin-top:    10px; 
+
+}
+
+.Div-WaitIndicator {
+    width:      100%; 
+    text-align: center;
+}
+
+
+.Input-Large
+{
+    font-size:     large   !important; 
+    height:        40px    !important; 
+ }
+
+.TextArea-Large
+{
+    font-size:     large  !important; 
+    width:         90%    !important; 
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.Button-Selection
+{
+    font-size:     x-large !important; 
+    margin:        5px;
+}
+
+.View {
+}
+
+Span-Input-Heading {
+}
+    
+
+.Table-Info {    
+    width: 90%;
+}
+
+.Column-Info-Label {   
+    width:      140px;
+
+}
+
+.Column-Info-Data {   
+    width:      80px;
+
+}
+
+.Column-Info-Unit {   
+
+}
+
+
+.Cell-Info-Heading {
+   color: #5f745e;
+}
+
+
+.Cell-Info-Label {
+    text-align:    Left; 
+    font-size: small;
+}
+
+
+.Cell-Info-Header {
+    text-align:    Right; 
+    font-size:     small;
+}
+
+.Cell-Info-HeaderUnit {
+    text-align:    Right; 
+    font-size:     small;
+    color:         #5f745e;
+}
+
+.Cell-Info-Data {
+    text-align:    right; 
+}
+
+.Cell-Info-Unit {
+    text-align:    Left; 
+    padding-left:  10px;
+    font-size:     small;
+    color:         #5f745e;
+}
+
+.Div-Info-3Col {
+  width:30%; 
+  display:inline-block;
+  color:         #5f745e;
+}
+     
+.RadioButton-Popup-Option {
+    width: 120px; 
+    margin: 14 0 4 8 !important;
+}
+     
+

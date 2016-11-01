@@ -1,0 +1,32 @@
+﻿<div id="ViewLoadConsignments"          data-dojo-type="dojox.mobile.View" style="height: 100%;"        >
+   
+  <h1 label="Load Consignments" data-dojo-type="dojox.mobile.Heading" back="Activities" moveTo="ViewActivities"></h1>
+  
+   <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect" shadow="true" >
+     <span>G11 KKL</span>
+   </div>   
+
+  <div class="Round-Rect-Info" data-dojo-type="dojox.mobile.RoundRect">
+      <span>Odometer Reading (Kilometers)</span>
+      <input type="text" class="TextBox-Large" data-dojo-type="dojox.mobile.TextBox" value="23044"></input>
+      <span>Today's Consignments</span>
+      <div ><button class="Button-Selection" data-dojo-type="dojox.mobile.ToggleButton" checked="false">294009123123</button> (23.4kg)</div>
+      <div ><button class="Button-Selection" data-dojo-type="dojox.mobile.ToggleButton" checked="false">294009123124</button> (23.4kg)</div>
+      <span>Unlisted Consignments</span>
+      <button class="Button-Selection" data-dojo-type="dojox.mobile.Button" onClick="app.showDialog('DialogLoadUnlisted')">Enter Consignments</button>
+  </div>
+
+  <ul data-dojo-type="dojox.mobile.RoundRectList">
+    <li data-dojo-type="dojox.mobile.ListItem" rightText="Load" moveTo="ViewActivities"></li>
+  </ul>
+
+   <div id="DialogLoadUnlisted" data-dojo-type="dojox.mobile.SimpleDialog" style="display: none;" >
+      <div class="mblSimpleDialogTitle">Unlisted Consignments</div>
+      <div class="mblSimpleDialogText">Add Consignment ID per line, and optional weight in KG.</div>
+      <textarea  class="TextArea-Large" data-dojo-type="dojox.mobile.ExpandingTextArea" value="" style="height: 380px;"></textarea>
+      <button data-dojo-type="dojox.mobile.Button" class="mblSimpleDialogButton"                style="width:100px;" onclick="app.hideDialog('DialogLoadUnlisted');">Yes</button>
+      <button data-dojo-type="dojox.mobile.Button" class="mblSimpleDialogButton  mblRedButton"  style="width:100px;" onclick="app.hideDialog('DialogLoadUnlisted');">No</button>
+  </div>
+
+
+</div>

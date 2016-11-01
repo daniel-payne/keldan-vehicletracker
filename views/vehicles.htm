@@ -1,0 +1,27 @@
+﻿<div id="ViewVehicles"  data-dojo-type="dojox.mobile.ScrollableView"    >
+
+  <h1 label="Vehicles" data-dojo-type="dojox.mobile.Heading" back="Logout" moveTo="ViewWelcome">
+    <div data-dojo-type="dojox.mobile.ToolBarButton" class="mblDomButton" style="float:right;" onClick="app.showDialog('DialogVehiclesClear')">Clear List</div>
+  </h1>
+  
+  <ul data-dojo-type="dojox.mobile.RoundRectList">
+    <li data-dojo-type="dojox.mobile.ListItem" url="./views/overview.htm" rightText="BMW 520i"                      rightIcon="mblDomButtonArrow" >R543 WLB</li>
+    <li data-dojo-type="dojox.mobile.ListItem" url="./views/menu.htm"     rightText="Rover Metro 110 Knightsbridge" rightIcon="mblDomButtonArrow" >P898 KJW</li>
+    <li data-dojo-type="dojox.mobile.ListItem" url="./views/menu.htm"     rightText="IVECO Eurocargo"               rightIcon="mblDomButtonArrow" >Gll KKL</li>
+  </ul>
+
+  <ul data-dojo-type="dojox.mobile.RoundRectList">
+    <li data-dojo-type="dojox.mobile.ListItem" rightText="Enter Details" url="./views/new.htm" >New Vehicle</li>
+  </ul>
+
+  <div id="DialogVehiclesClear" data-dojo-type="dojox.mobile.SimpleDialog" style="display: none;" >
+      <div class="mblSimpleDialogTitle">Clear List</div>
+      <div class="mblSimpleDialogText">Do you want to clear the list of vehicles you have stored and start again?.</div>
+      <button data-dojo-type="dojox.mobile.Button" class="mblSimpleDialogButton"                style="width:100px;" onclick="app.hideDialog('DialogVehiclesClear');">Yes</button>
+      <button data-dojo-type="dojox.mobile.Button" class="mblSimpleDialogButton  mblRedButton"  style="width:100px;" onclick="app.hideDialog('DialogVehiclesClear');">No</button>
+  </div>
+
+</div>
+
+
+
